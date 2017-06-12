@@ -16,7 +16,7 @@ WSS 封装了复杂的内部实现，对外开放了简单的发布／订阅机�
 
 WSS 服务提供了基于 HTTP 1.1 的 RESTful API，发布者可使用 GET/DELETE/PUT/POST 指令来操作 WSS 服务提供的资源；采用 RESTful API 的好处是可以抹平服务端使用的开发语言的差异，学习成本基本为 0，技术开发人员可以将更多的精力放在业务数据结构、流程、逻辑等的构建上。
 
-WSS 服务提供了开放于广域互联网的 URI，使得任何互联网终端均可连接和订阅事件。事件订阅基于标准 **WebSocket** 协议而并非私有协议，使用者无须担心对未来软件系统升级的潜在的兼容性问题。
+WSS 服务提供了开放于广域互联网的 URI，使得任何互联网终端均可连接和订阅数据池变动事件。事件订阅基于标准 **WebSocket** 协议而并非私有协议，使用者无须担心对未来软件系统升级的潜在的兼容性问题。
 
 > 目前所有的主流浏览器均支持 WebSocket 协议，细节参见：
 > * http://websocket.org
@@ -328,7 +328,7 @@ WSS 服务在客户端接入推荐使用 Socket.IO [官网](https://socket.io) �
 ## API
 
 * [服务端 API](https://github.com/xxuyou/wss/blob/master/doc/server-api.md)
-* [客户端 API (建设中)](https://github.com/xxuyou/wss)
+* [客户端 API](https://github.com/xxuyou/wss/blob/master/doc/client-api.md)
 
 ## DEMO
 
@@ -427,19 +427,19 @@ PUT 和 POST 操作会有多个事件触发，是为了方便业务上不同的�
 举个例子：
 
 > 订阅者1成功连接后，订阅了 test1、test2 和 test3 数据池。
-
+>
 > 订阅者2成功连接后，订阅了 test1、test3 数据池。
-
+>
 > 订阅者3成功连接后，订阅了 test4 数据池。
-
+>
 > 订阅者4成功连接后，没有订阅任何数据池。
-
+>
 > 当发布者发布数据池 test1 ，数据为 {"name":"test1 OK"}，那么订阅者1、2会收到此 JSON 数据包；
-
+>
 > 当发布者发布数据池 test2 ，数据为 {"name":"test2 OK"}，那么订阅者1会收到此 JSON 数据包；
-
+>
 > 当发布者发布数据池 test4 ，数据为 {"name":"test4 OK"}，那么订阅者3会收到此 JSON 数据包；
-
+> 
 > 前面三个发布动作，订阅者4不会收到任何数据。
 
 WSS 服务目前不支持向特定的订阅者广播数据，但是可以使用业务系统规划来实现这个需求，具体思路是：
