@@ -325,6 +325,11 @@ WSS 服务在客户端接入推荐使用 Socket.IO [官网](https://socket.io) �
 
 > Socket.IO 绑定事件使用 `Socket.on()` 方法，解除绑定事件使用 `Socket.off()` 方法，详见其 [官网 Docs Client API](https://socket.io/docs/client-api/)。
 
+## API
+
+* [服务端 API](https://github.com/xxuyou/wss/blob/master/doc/server-api.md)
+* [客户端 API (建设中)](https://github.com/xxuyou/wss)
+
 ## DEMO
 
 相关代码请见 [服务端及客户端示例代码](https://github.com/xxuyou/wss/tree/master/example)
