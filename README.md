@@ -245,7 +245,7 @@ $payload = array(
     'exp' => time() + 86700
 );
 $secretKey = "1Ufd******PitR"; // 超级密钥
-$token = \JWT::encode($payload, $secretKey, {"algorithm": "HS256"}); // JWT 加密参数恒定为 HS256
+$token = \JWT::encode($payload, $secretKey, "HS256"); // JWT 加密参数恒定为 HS256
 ?>
 ```
 
@@ -439,7 +439,7 @@ PUT 和 POST 操作会有多个事件触发，是为了方便业务上不同的�
 > 当发布者发布数据池 test2 ，数据为 {"name":"test2 OK"}，那么订阅者1会收到此 JSON 数据包；
 >
 > 当发布者发布数据池 test4 ，数据为 {"name":"test4 OK"}，那么订阅者3会收到此 JSON 数据包；
-> 
+>
 > 前面三个发布动作，订阅者4不会收到任何数据。
 
 WSS 服务目前不支持向特定的订阅者广播数据，但是可以使用业务系统规划来实现这个需求，具体思路是：
